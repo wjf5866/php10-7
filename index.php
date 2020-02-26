@@ -15,19 +15,22 @@
     </head>
     <body>
         <div class='add'>
-            <textarea ></textarea>
-            <input class='username' type="text"/>
-            <input class='submit' type="submit" value='提交'/>
-            <div style='clear:both'></div>
-            <!-- 在最后一个浮动后面清除浮动，否则后面的布局就乱了。
-            这种写法就是一个单纯功能性的效果，不会在网页上有任何显示 -->
-
+            <form action="save.php" method='POST'>
+                <textarea name='content'></textarea>
+                <input name='username' class='username' type="text"/>
+                <input class='submit' type="submit" value='提交'/>
+                <!--为每个表单项设置一个名称，作为唯一的标识，为后续的引用作准备 -->
+                <div style='clear:both'></div>
+                <!-- 在最后一个浮动后面清除浮动，否则后面的布局就乱了。
+                这种写法就是一个单纯功能性的效果，不会在网页上有任何显示 -->
+            </form>
         </div>
         <div class='list'>
             <div class='msg'>
                 <p>用户名</p>
                 <p>留言内容</p>
             </div>
+
             <div class='msg'>
                 <p>用户名</p>
                 <p>留言内容</p>
