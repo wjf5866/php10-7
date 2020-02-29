@@ -1,23 +1,33 @@
 <?php
 
-//连接到数据库
-$dsn = 'mysql:dbname=php10-7;host=127.0.0.1';
-$pdo = new PDO($dsn, 'root', '123456');
+class DB{
 
-function write($pdo,$sql){
-    //将sql送入 prepare方法,准备SQL语句
-    $sth = $pdo->prepare($sql);
-    //执行SQL
-    return $sth->execute();
+    public $pdo=null;
+    function __construct(){
+        //连接到数据库
+        $dsn = 'mysql:dbname=php10-7;host=127.0.0.1';
+        $this->pdo = new PDO($dsn, 'root', '123456');
+        
+    }
+
+    function write($sql){
+        //将sql送入 prepare方法,准备SQL语句
+        $sth = $this->pdo->prepare($sql);
+        //执行SQL
+        return $sth->execute();
+    }
+    
+    function read($sql){
+        $sth = $this->pdo->prepare($sql);
+        $sth->execute();
+        $rows = $sth->fetchAll();
+        return $rows;
+    }
+
 }
 
-function read($pdo,$sql){
-    $sth = $pdo->prepare($sql);
-    $sth->execute();
-    $rows = $sth->fetchAll();
-    return $rows;
-}
 
+$db = new DB();
 
 
 ?>

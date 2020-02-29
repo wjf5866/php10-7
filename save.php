@@ -27,14 +27,14 @@ $sql = "insert into msg (username,content) values ('{$username}','{$content}')";
 //测试期间，可以echo($sql)将返回的值拿到navicat中验证一下
 
 
-write($pdo,$sql);
+$db->write($sql);
 
 
 
 
 
 //跳转回首页
-header('location:index.php');
+header('location:bootstrap.php');
 
 
 ?>

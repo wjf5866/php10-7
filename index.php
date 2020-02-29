@@ -3,8 +3,8 @@
 include('db.php');
 $sql = "SELECT * FROM `msg` ORDER BY id DESC";
 
-$rows = read($pdo,$sql);
-
+//$rows = read($pdo,$sql);
+$rows = $db->read($pdo, $sql);
 ?>
 
 
