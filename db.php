@@ -1,6 +1,9 @@
 <?php
+session_start();
+//获取当前登录用户的ID
+$user_id = $_SESSION['id'] ?? 0;
 
-class DB{
+class DB{ 
 
     public $pdo=null;
     function __construct(){

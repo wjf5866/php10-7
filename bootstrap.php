@@ -1,5 +1,6 @@
 <?php
 include('db.php');
+//var_dump($_SESSION);
 
 $sql = "SELECT COUNT(*) as t FROM msg";
 $total = $db->read($sql)[0]['t'];
@@ -13,7 +14,6 @@ $pageMax = ceil($total/$pageNum);
 $page = $_GET['page'] ?? 1;
 $offset = ($page-1)*$pageNum;
 
-
 $sql = "SELECT * FROM `msg` ORDER BY id DESC LIMIT $offset,$pageNum";
 $rows = $db->read($sql);
 ?>
@@ -22,27 +22,22 @@ $rows = $db->read($sql);
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
     <title>留言板之bootstrap美化版</title>
+    <?php include('header.php');?>
 </head>
 
 <body>
     <div class='container'>
 
+        <?php include('menu.php');?>
+
         <div class="jumbotron">
             <h1 class="display-4">我的习作 -- 留言板</h1>
             <p class="lead">根据1024编程实验室做的练习，请多指教。</p>
-
         </div>
 
         <form action="save.php" method="POST">
             <div class='row'>
-
                 <div class='col-12'>
                     <div class='form-group'>
                         <textarea name="content" class='form-control' rows="4"></textarea>
@@ -60,7 +55,6 @@ $rows = $db->read($sql);
                         <input class='btn btn-primary' type="submit" value="提交" />
                     </div>
                 </div>
-
             </div>
         </form>
 
@@ -91,13 +85,9 @@ $rows = $db->read($sql);
                         <li class="page-item">
                             <a class="page-link" href="bootstrap.php?page=<?php echo($i); ?>">
                                 <?php echo($i);  ?>
-
                             </a>
-
                             <?php endfor;  ?>
                         </li>
-
-
                     </ul>
                 </nav>
             </div>
